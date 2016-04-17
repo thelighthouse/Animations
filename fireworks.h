@@ -68,7 +68,7 @@ public:
 				explode_phase = 0;
 				delay_time = 200;
 			    current_color = CHSV(random(255),random(255),random(255));
-				led[position] = current_color;
+				leds[position] = current_color;
 			}
 		}
 		else
@@ -89,5 +89,9 @@ private:
 	CRGB current_color;
 	CRGB buffer[NUM_LEDS];
 };
+
+Animation * fireworks_factory() {
+  return new Fireworks();  
+} 
 
 #endif

@@ -13,6 +13,7 @@ uint8_t counter = 1;
 //#include "Necklace_animations.h"
 #include "animation.h"
 #include "ringrunner.h"
+#include "fireworks.h"
 
 #define NUM_ANIMATIONS 1
 Animation * current_animation;
@@ -21,9 +22,10 @@ Animation *(*list[NUM_ANIMATIONS])();
 // setup gets called once
 void setup() {
   list[0] = &ringrunner_factory;
+  list[1] = &fireworks_factory;
   //list[1] = &foobar_factory;
   
-  current_animation = list[0]();
+  current_animation = list[1]();
   //delete current_animation; - goes in button press
   //current_animation = list[1]();
   
