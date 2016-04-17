@@ -15,13 +15,7 @@ public:
 	{
   		for(int i=0; i<NUM_LEDS/2;i++)
   		{
-    		buffer[NUM_LEDS-1-i] = leds[i];
-    		buffer[i] = leds[i];
-  		}
-  		for(int i=0; i<NUM_LEDS;i++){
-   		 	leds[i] = buffer[i];
-  		}
-
+    		leds[NUM_LEDS-1-i] = leds[i];
 	}
 	void step()
 	{
@@ -49,7 +43,6 @@ public:
 private:	
 	int position;
 	CRGB current_color;
-	CRGB buffer[NUM_LEDS];
 
 
 };
