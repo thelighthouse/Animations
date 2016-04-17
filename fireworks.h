@@ -40,11 +40,18 @@ public:
 		//index position of lit LED
 		if(position == 8)
 		{
-			if(explode_phase == 0)
+			
+			if(explode_phase == 2)
 			{
-				leds[position+1] = current_color;
-				leds[position-1] = current_color;
-				explode_phase++;				
+				leds[position+2] = CRGB::Black;
+				leds[position-2] = CRGB::Black;
+				
+				//reset things
+				position = 0;
+				explode_phase = 0;
+				delay_time = 200;
+			    current_color = CHSV(random(255),random(255),random(255));
+				leds[position] = current_color;
 			}
 			
 			if(explode_phase == 1)
@@ -56,19 +63,11 @@ public:
 				explode_phase++;				
 			}
 			
-			if(explode_phase == 2)
+			if(explode_phase == 0)
 			{
-				leds[position+2] = CRGB::Black;
-				leds[position-2] = CRGB::Black;				
-				leds[position+3] = current_color;
-				leds[position-3] = current_color;	
-				
-				//reset things
-				position = 0;
-				explode_phase = 0;
-				delay_time = 200;
-			    current_color = CHSV(random(255),random(255),random(255));
-				leds[position] = current_color;
+				leds[position+1] = current_color;
+				leds[position-1] = current_color;
+				explode_phase++;				
 			}
 		}
 		else
