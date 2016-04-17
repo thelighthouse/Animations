@@ -16,6 +16,7 @@ public:
   		for(int i=0; i<NUM_LEDS/2;i++)
   		{
     		leds[NUM_LEDS-1-i] = leds[i];
+    	}
 	}
 	void step()
 	{
