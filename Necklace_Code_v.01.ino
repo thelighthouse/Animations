@@ -14,8 +14,19 @@ uint8_t counter = 1;
 #include "animation.h"
 #include "ringrunner.h"
 
+#define NUM_ANIMATIONS 1
+Animation * current_animation;
+Animation *(*list[NUM_ANIMATIONS])();
+
 // setup gets called once
 void setup() {
+  list[0] = &ringrunner_factory;
+  //list[1] = &foobar_factory;
+  
+  current_animation = list[0]();
+  //delete current_animation; - goes in button press
+  //current_animation = list[1]();
+  
    // power-up sanity delay
   delay( 3000 );
   
@@ -38,7 +49,9 @@ void setup() {
   Animation_2,
   random_ring
 };*/
-Animation * animation  = new RingRunner();
+
+
+
 ///
 /*void Change_animation()
 {
@@ -48,7 +61,7 @@ Animation * animation  = new RingRunner();
 // loop is called repeatedly forever
 void loop()
 {
-  animation->step();
+  current_animation->step();
   /*counter++;
   if(counter==0){
     Change_animation();

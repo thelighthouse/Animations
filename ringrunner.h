@@ -54,4 +54,9 @@ private:
 
 };
 
+Animation * ringrunner_factory() {
+  return new RingRunner();  
+} 
+
+
 #endif
