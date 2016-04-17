@@ -38,7 +38,7 @@ public:
 		leds[position] = CRGB::Black;
 
 		//index position of lit LED
-		if(position == 8)
+		if(position == 10)
 		{			
 			if(explode_phase == 2)
 			{
@@ -53,14 +53,15 @@ public:
 				leds[position-1] = CRGB::Black;				
 				leds[position+2] = current_color;
 				leds[position-2] = current_color;
-				explode_phase++;				
+				explode_phase++;
 			}
 			
 			if(explode_phase == 0)
 			{
+				delay_time = 50;
 				leds[position+1] = current_color;
 				leds[position-1] = current_color;
-				explode_phase++;				
+				explode_phase++;
 			}
 			
 			if(explode_phase == 3)
