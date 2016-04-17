@@ -39,19 +39,12 @@ public:
 
 		//index position of lit LED
 		if(position == 8)
-		{
-			
+		{			
 			if(explode_phase == 2)
 			{
 				leds[position+2] = CRGB::Black;
 				leds[position-2] = CRGB::Black;
-				
-				//reset things
-				position = 0;
-				explode_phase = 0;
-				delay_time = 200;
-			    current_color = CHSV(random(255),random(255),random(255));
-				leds[position] = current_color;
+				explode_phase++;
 			}
 			
 			if(explode_phase == 1)
@@ -68,6 +61,16 @@ public:
 				leds[position+1] = current_color;
 				leds[position-1] = current_color;
 				explode_phase++;				
+			}
+			
+			if(explode_phase == 3)
+			{
+				//reset things
+				position = 0;
+				explode_phase = 0;
+				delay_time = 200;
+			    current_color = CHSV(random(255),random(255),random(255));
+				leds[position] = current_color;
 			}
 		}
 		else
