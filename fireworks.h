@@ -13,18 +13,6 @@ public:
 		current_color = CRGB::Blue;//fix later
 	}
 
-	void mirror_leds(CRGB *leds)
-	{
-  		for(int i=0; i<NUM_LEDS/2;i++)
-  		{
-    		buffer[NUM_LEDS-1-i] = leds[i];
-    		buffer[i] = leds[i];
-  		}
-  		for(int i=0; i<NUM_LEDS;i++){
-   		 	leds[i] = buffer[i];
-  		}
-	}
-	
 	void explode(CRGB *leds)
 	{
 		//if first phase, set current led to black and +-1 LED to color
