@@ -8,7 +8,7 @@ public:
 	Fireworks()
 	{
 		position = 0;
-		delay_time = 200;
+		delay_time = 20;
 		explode_phase = 0;
 		current_color = CRGB::Blue;//fix later
 	}
@@ -26,7 +26,7 @@ public:
 		leds[position] = CRGB::Black;
 
 		//index position of lit LED
-		if(position == 10)
+		if(position == NUM_LEDS/2)
 		{			
 			if(explode_phase == 2)
 			{
@@ -46,7 +46,7 @@ public:
 			
 			if(explode_phase == 0)
 			{
-				delay_time = 50;
+				delay_time = 150;
 				leds[position+1] = current_color;
 				leds[position-1] = current_color;
 				explode_phase++;
@@ -57,7 +57,7 @@ public:
 				//reset things
 				position = 0;
 				explode_phase = 0;
-				delay_time = 200;
+				delay_time = 20;
 			    current_color = CHSV(random(255),random(255),random(255));
 				leds[position] = current_color;
 			}
@@ -66,7 +66,7 @@ public:
 		{
 			position++;
 			leds[position] = current_color;
-			delay_time = delay_time*1.1;
+			delay_time = delay_time+1;
 		}
 	// load the CRGB values into led
 		FastLED.show();
